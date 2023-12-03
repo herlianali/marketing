@@ -35,7 +35,15 @@
                                         <td>{{ $pel->tgl_masuk }}</td>
                                         <td>{{ $pel->alamat }}</td>
                                         <td>{{ $pel->no_hp }}</td>
-                                        <td>{{ $pel->verifikasi }}</td>
+                                        <td>
+                                            @if ($pel->verifikasi == 'Diterima')
+                                                <span class="badge rounded bg-label-success">{{ $pel->verifikasi }}</span>
+                                            @elseif ($pel->verifikasi == 'Belum Diverifikasi')
+                                                <span class="badge rounded bg-label-warning">{{ $pel->verifikasi }}</span>
+                                            @else
+                                                <span class="badge rounded bg-label-danger">{{ $pel->verifikasi }}</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <form method="POST" action="{{ route('pelanggan.destroy',
                                             ['pelanggan' => $pel->id_pel]) }}">

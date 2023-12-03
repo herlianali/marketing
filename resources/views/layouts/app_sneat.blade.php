@@ -109,12 +109,18 @@ data-template="vertical-menu-template-free"
 
             @endif
 
+            @if ($akses != 'marketing')
+
             <li class="menu-item {{ \Route::is('paket.*') ? 'active' : '' }}">
                 <a href="{{ route('paket.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-collection"></i>
                     <div data-i18n="Basic">Data Paket</div>
                 </a>
             </li>
+
+            @endif
+
+            @if ($akses != 'marketing')
 
             <li class="menu-item {{ \Route::is('marketing.*') ? 'active' : '' }}">
                 <a href="{{ route('marketing.index') }}" class="menu-link">
@@ -123,6 +129,7 @@ data-template="vertical-menu-template-free"
                 </a>
             </li>
 
+            @endif
             <li class="menu-item {{ \Route::is('pelanggan.*') ? 'active' : '' }}">
                 <a href="{{ route('pelanggan.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
