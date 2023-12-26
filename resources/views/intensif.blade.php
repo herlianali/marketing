@@ -33,8 +33,40 @@
                                         <td>
                                             <a href="{{ url('approve',$pel->id_pel) }}" class="btn btn-info">Approve</a>
                                             <a href="{{ url('reject',$pel->id_pel) }}" class="btn btn-danger">Reject</a>
+                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#smallModal">Detail</button>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel2">Detail Status Pelanggan</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                <div class="col mb-3">
+                                                  <label for="nameSmall" class="form-label">Nama Pelanggan</label>
+                                                  <input type="text" class="form-control" value="{{ $pel->nm_pelanggan }}" disabled>
+                                                </div>
+                                              </div>
+                                              <div class="row g-2">
+                                                <div class="col mb-0">
+                                                  <label class="form-label" for="emailSmall">Nomor Pelanggan</label>
+                                                  <input type="text" class="form-control" value="{{ $pel->id_pel }}" disabled>
+                                                </div>
+                                                <div class="col mb-0">
+                                                  <label for="dobSmall" class="form-label">Status</label>
+                                                  <input type="text" class="form-control" value="{{ $pel->verifikasi }}" disabled>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-center">Data Tidak Ada</td>
