@@ -66,7 +66,7 @@
 
                 <div class="mb-3">
                 <label for="no_rek" class="form-label">No Rekening</label>
-                <input type="text" class="form-control @error('no_rek') is-invalid @enderror" id="no_rek" name="no_rek"  value="{{ $user->no_rek }}" required autocomplete="no_rek"/>
+                <input type="number" inputmode="numeric" class="form-control @error('no_rek') is-invalid @enderror" id="no_rek" name="no_rek"  value="{{ $user->no_rek }}" required="no_rek"/>
                 @error('no_rek')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

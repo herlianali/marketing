@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Userer;
 use App\Models\Pelanggan;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,7 +27,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'akses' => 'required|in:marketing,administrator,manager_marketing',
-            'no_rek' => 'sometimes',
+            'no_rek' => 'sometimes|required|numeric',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -62,7 +63,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'akses' => 'required|in:marketing,administrator,manager_marketing',
-            'no_rek' => 'sometimes',
+            'no_rek' => 'sometimes|required|numeric',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -76,7 +77,11 @@ class UserController extends Controller
         User::where('id_user',$id)->update($data);
 
         flash('Data Berhasil Di Ubah');
-        return redirect()->route('user.index');
+        if (Auth::user()->akses == 'marketing') {
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('user.index');
+        }
     }
 
     public function destroy($user)

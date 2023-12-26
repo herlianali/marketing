@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $total_marketing = User::where('akses', 'marketing')->count();
+        $total_pelanggan = Pelanggan::all()->count();
+        $total_pelanggan_baru = Pelanggan::where('verifikasi', 'Belum Diverifikasi')->count();
+        // dd($total_pelanggan_baru);
+        return view('home', compact('total_marketing', 'total_pelanggan', 'total_pelanggan_baru'));
     }
 }

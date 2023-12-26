@@ -29,8 +29,48 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pel->id_pel }}</td>
-                                        <td><img class="card-img-top" src="{{ Storage::url($pel->ktp) }}" width="50px"></td>
-                                        <td><img class="card-img-top" src="{{ Storage::url($pel->wajah) }}" width="50px"></td>
+                                        <td>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#ktp">
+                                                <img class="card-img-top" src="{{ Storage::url($pel->ktp) }}" width="50px">
+                                            </a>
+                                            <div class="modal fade" id="ktp" tabindex="-1" aria-labelledby="ktpLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="ktpLabel">Ktp</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img src="{{ Storage::url($pel->ktp) }}" alt="" width="50%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#wajah">
+                                                <img class="card-img-top" src="{{ Storage::url($pel->wajah) }}" width="50px">
+                                            </a>
+                                            <div class="modal fade" id="wajah" tabindex="-1" aria-labelledby="wajahLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="wajahLabel">Foto Wajah</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img src="{{ Storage::url($pel->wajah) }}" alt="" width="50%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>{{ $pel->user->nama }}</td>
                                         <td>{{ $pel->tgl_masuk }}</td>
                                         <td>{{ $pel->alamat }}</td>
@@ -55,6 +95,7 @@
                                             </form>
                                         </td>
                                     </tr>
+
                                 @empty
                                     <tr>
                                         <td colspan="11" class="text-center">Data Tidak Ada</td>
@@ -64,6 +105,30 @@
                         </table>
                     </div>
 
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Croissant jelly beans donut apple pie. Caramels bonbon lemon drops. Sesame snaps lemon drops lemon drops liquorice icing bonbon pastry pastry carrot cake. Dragée sweet sweet roll sugar plum.</p>
+                                    <p>Jelly-o cookie jelly gummies pudding cheesecake lollipop macaroon. Sweet chocolate bar sweet roll carrot cake. Sweet roll sesame snaps fruitcake brownie bear claw toffee bonbon brownie.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@
                                     <th>NO</th>
                                     <th>Nama Paket</th>
                                     <th>Fee Marketing</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -23,6 +24,17 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pak->paket }}</td>
                                         <td>Rp. {{ number_format($pak->fee_marketing, 0, ',', '.') }}</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('paket.destroy', $pak->id) }}">
+                                            <a href="{{ route('paket.edit', $pak->id) }}" class="btn btn-warning">Edit</a>
+
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Hapus</button>
+                                            {{-- <a href="{{ route('') }}" class="btn btn-info">Detail</a> --}}
+
+                                            </form>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>

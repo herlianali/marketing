@@ -64,6 +64,20 @@ data-template="vertical-menu-template-free"
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('sneat') }}/assets/js/config.js"></script>
     <link rel="stylesheet" href="{{ asset('font/css/all.min.css') }}">
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
@@ -209,12 +223,13 @@ data-template="vertical-menu-template-free"
                     <li>
                     <div class="dropdown-divider"></div>
                     </li>
-                    {{-- <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                    </a>
-                    </li> --}}
+                    <li>
+                        @php($id_user = Auth::user()->id_user)
+                        <a class="dropdown-item" href="{{ route('user.edit', $id_user) }}">
+                            <i class="bx bx-user me-2"></i>
+                            <span class="align-middle">Profile Saya</span>
+                        </a>
+                    </li>
                     {{-- <li>
                     <div class="dropdown-divider"></div>
                     </li> --}}

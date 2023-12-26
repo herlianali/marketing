@@ -188,12 +188,12 @@ data-template="vertical-menu-template-free"
                 </div>
             </form>
 
-            <p class="text-center">
+            {{-- <p class="text-center">
                 <span>Buat Akun Baru</span>
                 <a href="{{ route('register') }}">
                 <span>Daftar Akun</span>
                 </a>
-            </p>
+            </p> --}}
             </div>
         </div>
         <!-- /Register -->
