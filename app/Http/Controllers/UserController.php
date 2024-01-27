@@ -8,13 +8,29 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data["market"] = User::all();
-        return view('data_marketing', $data);
+
+        if ($request->ajax()) {
+            $data = User::all();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row) {
+                        $btn = '
+                            <button data-id="'.$row->id_user.'" class="btn btn-warning edit">Edit</button>
+                            <button data-id="'.$row->id_user.'" class="btn btn-danger hapus">Hapus</button>
+                            <button data-id="'.$row->id_user.'" class="btn btn-info detail">Detail</button>
+                        ';
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('data_marketing');
     }
 
     public function create()

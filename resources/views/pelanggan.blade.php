@@ -8,8 +8,10 @@
 
                 <div class="card-body">
                     <a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
+                    <br>
+                    <br>
+                    <div class="card-datatable table-responsive">
+                        <table id="example" class="datatables-basic table table-striped">
                             <thead>
                                 <tr>
                                     <th>NO</th>
@@ -94,33 +96,7 @@
                                             <button type="submit" class="btn btn-danger ">Hapus</button>
 
                                             </form>
-                                            {{-- <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detail">Detail</button>
-                                            <div class="modal fade" id="detail" tabindex="-1" aria-labelledby="detailLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="detailLabel">Detail Pelanggan</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="row">
-                                                                    <div class="col mb-3">
-                                                                      <label for="nameSmall" class="form-label">Nomor Pelanggan</label>
-                                                                      <input type="text" class="form-control" value="{{ $pel->id_pel }}" disabled>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col mb-3">
-                                                                      <label for="nameSmall" class="form-label">Nama Pelanggan</label>
-                                                                      <input type="text" class="form-control" value="{{ $pel->nm_pelanggan }}" disabled>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
+
                                             </div>
                                         </td>
                                     </tr>
@@ -138,3 +114,39 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $("#example").DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                    {
+                        title: "Data Marketing",
+                        extend: "print",
+                        orientation: "landscape",
+                        pageSize: "LEGAL",
+                        exportOptions: {columns: [":visible"]},
+                        className: "btn btn-primary btn-sm"
+                    },
+                    {
+                        title: "Data Marketing",
+                        extend: "excelHtml5",
+                        exportOptions: {columns: [":visible"]},
+                        className: "btn btn-primary btn-sm"
+                    },
+                    {
+                        title: "Data Marketing",
+                        extend: "pdfHtml5",
+                        className: "btn btn-primary btn-sm",
+                        customize: function(doc) {
+                            doc.styles.title = {
+                                fontSize: '20',
+                                alignment: 'center'
+                            }
+                        }
+                    }
+                ],
+        });
+
+    </script>
+@endpush
