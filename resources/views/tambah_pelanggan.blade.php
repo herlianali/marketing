@@ -50,7 +50,7 @@
 
                 <div class="mb-3">
                 <label for="no_hp" class="form-label">No Hp</label>
-                <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" placeholder="Masukkan No Hp" value="{{ old('no_hp') }}" required autocomplete="no_hp"/>
+                <input type="number" inputmode="numeric" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" placeholder="Masukkan No Hp" value="{{ old('no_hp') }}" required autocomplete="no_hp"/>
                 @error('no_hp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
