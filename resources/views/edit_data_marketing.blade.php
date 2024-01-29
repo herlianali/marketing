@@ -54,8 +54,10 @@
                 <label for="akses" class="form-label">Hak Akses</label>
                 <select class="form-control @error('akses') is-invalid @enderror" id="akses" name="akses">
                     <option value="" readonly>Pilih Hak Akses</option>
-                    <option value="marketing" {{ $user->akses == 'marketing' ? 'selected' : '' }} >Marketing</option>
-                    <option value="admin" {{ $user->akses == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="" readonly>Pilih Hak Akses</option>
+                    <option value="administrator" {{ $user->akses == 'administrator' ? 'selected' : '' }}>Administrator</option>
+                    <option value="marketing" {{ $user->akses == 'marketing' ? 'selected' : '' }}>Marketing</option>
+                    <option value="marketing_manager" {{ $user->akses == 'marketing_manager' ? 'selected' : '' }}>Manager Marketing</option>
                 </select>
                 @error('akses')
                     <span class="invalid-feedback" role="alert">

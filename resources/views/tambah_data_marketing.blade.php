@@ -44,7 +44,7 @@
                     <option value="" readonly>Pilih Hak Akses</option>
                     <option value="administrator">Administrator</option>
                     <option value="marketing">Marketing</option>
-                    <option value="marketing">Manager Marketing</option>
+                    <option value="marketing_manager">Manager Marketing</option>
                 </select>
                 @error('akses')
                     <span class="invalid-feedback" role="alert">
