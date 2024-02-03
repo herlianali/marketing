@@ -24,6 +24,7 @@ class User extends Authenticatable
         'akses',
         'no_rek',
         'password',
+        'status',
     ];
 
     /**

@@ -31,4 +31,9 @@ class HomeController extends Controller
         // dd($total_pelanggan_baru);
         return view('home', compact('total_marketing', 'total_pelanggan', 'total_pelanggan_baru'));
     }
+
+    public function pending()
+    {
+        return view('pending');
+    }
 }

@@ -108,6 +108,7 @@ data-template="vertical-menu-template-free"
         @php($akses = Auth::user()->akses)
         <ul class="menu-inner py-1">
             <!-- Dashboard -->
+
             <li class="menu-item {{ \Route::is('home') ? 'active' : '' }}">
                 <a href="{{ route('home') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>

@@ -75,7 +75,7 @@ data-template="vertical-menu-template-free"
             <div class="card-body">
             <!-- Logo -->
             <!-- /Logo -->
-            <h4 class="mb-2">Daftar Akun Baru</h4>
+            <h4 class="mb-2">Daftar Akun Marketing Baru</h4>
 
             <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
                 @csrf
@@ -99,21 +99,8 @@ data-template="vertical-menu-template-free"
                     </span>
                 @enderror
                 </div>
-
-                <div class="mb-3">
-                <label for="akses" class="form-label">Hak Akses</label>
-                <select class="form-control @error('akses') is-invalid @enderror" id="akses" name="akses">
-                    <option value="" readonly>Pilih Hak Akses</option>
-                    <option value="administrator">Administrator</option>
-                    <option value="manager_marketing">Manager Marketing</option>
-                    <option value="marketing">Marketing</option>
-                </select>
-                @error('akses')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                </div>
+                <input type="hidden" name="akses" value="marketing">
+                <input type="hidden" name="status" value="pending">
 
                 <div class="mb-3">
                 <label for="no_rek" class="form-label">No Rekening</label>

@@ -70,9 +70,9 @@ class RegisterController extends Controller
             'id_user' => Userer::IDGenerator(new User, 'id_user', 3, 'U'),
             'nama' => $data['nama'],
             'akses' => $data['akses'],
+            'status' => $data['status'],
             'no_rek' => $data['no_rek'],
             'password' => Hash::make($data['password']),
-            // 'password' => $data['password'],
         ]);
     }
 }

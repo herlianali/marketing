@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/pending', [App\Http\Controllers\HomeController::class, 'pending']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('user', App\Http\Controllers\UserController::class)->middleware('auth');
