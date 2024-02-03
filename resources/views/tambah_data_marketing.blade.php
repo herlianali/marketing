@@ -52,6 +52,7 @@
                     </span>
                 @enderror
                 </div>
+                <input type="hidden" name="status" value="pending">
 
                 <div class="mb-3">
                 <label for="no_rek" class="form-label">No Rekening</label>

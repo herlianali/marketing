@@ -12,25 +12,10 @@ use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-
-        if ($request->ajax()) {
-            $data = User::all();
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row) {
-                        $btn = '
-                            <button data-id="'.$row->id_user.'" class="btn btn-warning edit">Edit</button>
-                            <button data-id="'.$row->id_user.'" class="btn btn-danger hapus">Hapus</button>
-                            <button data-id="'.$row->id_user.'" class="btn btn-info detail">Detail</button>
-                        ';
-                        return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-        return view('data_marketing');
+        $data = User::all();
+        return view('data_marketing', compact('data'));
     }
 
     public function create()

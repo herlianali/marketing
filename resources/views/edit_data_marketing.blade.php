@@ -54,7 +54,6 @@
                 <label for="akses" class="form-label">Hak Akses</label>
                 <select class="form-control @error('akses') is-invalid @enderror" id="akses" name="akses">
                     <option value="" readonly>Pilih Hak Akses</option>
-                    <option value="" readonly>Pilih Hak Akses</option>
                     <option value="administrator" {{ $user->akses == 'administrator' ? 'selected' : '' }}>Administrator</option>
                     <option value="marketing" {{ $user->akses == 'marketing' ? 'selected' : '' }}>Marketing</option>
                     <option value="marketing_manager" {{ $user->akses == 'marketing_manager' ? 'selected' : '' }}>Manager Marketing</option>
@@ -74,6 +73,19 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                        <option value="aktif" {{ $user->status == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                        <option value="pending" {{ $user->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                    </select>
+                    @error('status')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3 form-password-toggle">
