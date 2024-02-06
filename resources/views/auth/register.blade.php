@@ -77,7 +77,7 @@ data-template="vertical-menu-template-free"
             <!-- /Logo -->
             <h4 class="mb-2">Daftar Akun Marketing Baru</h4>
 
-            <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
+            <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" enctype="multipart/form-data" method="POST">
                 @csrf
 
                 <div class="mb-3">
@@ -110,6 +110,39 @@ data-template="vertical-menu-template-free"
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="ktp" class="form-label">Foto KTP<b> (Format: jpg, png )</b></label>
+                    <input type="file" id="ktp" name="ktp" accept="image/*"
+                    class="form-control @error('ktp') is-invalid @enderror">
+                    @error('wajah')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto Wajah<b> (Format: jpg, png )</b></label>
+                    <input type="file" id="foto" name="foto" accept="image/*"
+                    class="form-control @error('foto') is-invalid @enderror">
+                    @error('foto')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="cv" class="form-label">File CV<b> (Format: pdf, docx, doc )</b></label>
+                    <input type="file" id="cv" name="cv" accept="image/*"
+                    class="form-control @error('cv') is-invalid @enderror">
+                    @error('cv')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3 form-password-toggle">

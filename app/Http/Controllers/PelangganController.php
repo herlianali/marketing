@@ -68,19 +68,6 @@ class PelangganController extends Controller
         flash('Data Berhasil Di Simpan');
         return redirect()->route('pelanggan.index');
 
-        // $post = new Pelanggan();
-        // $pelanggan = Pelangganer::IDGenerator(new Pelanggan(), 'id_pel', 3, 'P'); /** Generate id */
-        // $post->id_pel = $pelanggan;
-        // $post->nm_pelanggan = $request->nm_pelanggan;
-        // $post->alamat = $request->alamat;
-        // $post->no_hp = $request->no_hp;
-        // $post->user_id = $request->marketing;
-        // $post->tgl_masuk = $request->tgl_masuk;
-        // $post->ktp = $request->ktp;
-        // $post->wajah = $request->wajah;
-
-        // $post->save();
-
     }
 
     /**

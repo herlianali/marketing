@@ -106,6 +106,7 @@ data-template="vertical-menu-template-free"
         <div class="menu-inner-shadow"></div>
 
         @php($akses = Auth::user()->akses)
+        @php($status = Auth::user()->status)
         <ul class="menu-inner py-1">
             <!-- Dashboard -->
 
@@ -148,8 +149,9 @@ data-template="vertical-menu-template-free"
             </li>
 
             @endif
+
             <li class="menu-item {{ \Route::is('pelanggan.*') ? 'active' : '' }}">
-                <a href="{{ route('pelanggan.index') }}" class="menu-link">
+                <a @if ($status != 'pending') href="{{ route('pelanggan.index') }}" @else href="{{ route('home') }}" @endif  class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Basic">Data Pelanggan</div>
                 </a>
@@ -169,7 +171,7 @@ data-template="vertical-menu-template-free"
             @if ($akses != 'administrator' && $akses != 'manager_marketing')
 
                 <li class="menu-item {{ \Route::is('gaji.*') ? 'active' : '' }}">
-                    <a href="{{ route('gaji.index') }}" class="menu-link">
+                    <a @if ($status != 'pending') href="{{ route('gaji.index') }}" @else href="{{ route('home') }}" @endif class="menu-link">
                         <i class="menu-icon tf-icons bx bx-money"></i>
                         <div data-i18n="Basic">Gaji</div>
                     </a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->status == 'pending'){
+            return view('pending');
+        }
         $total_marketing = User::where('akses', 'marketing')->count();
         $total_pelanggan = Pelanggan::all()->count();
         $total_pelanggan_baru = Pelanggan::where('verifikasi', 'Belum Diverifikasi')->count();
