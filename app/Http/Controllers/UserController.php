@@ -41,6 +41,13 @@ class UserController extends Controller
         $post->password = Hash::make($request->password);
         // $post->password = $request->password;
         $post->save();
+        if($request->hasFile('ktp')){
+            $requestData['ktp'] = $request->file('ktp')->store('public');
+        }
+
+        if($request->hasFile('foto')){
+            $requestData['foto'] = $request->file('foto')->store('public');
+        }
         flash('Data Berhasil Di Simpan');
         return redirect()->route('user.index');
 
@@ -65,8 +72,27 @@ class UserController extends Controller
             'nama' => ['required', 'string', 'max:255'],
             'akses' => 'required|in:marketing,administrator,manager_marketing',
             'no_rek' => 'sometimes|required|numeric',
+            'ktp' => 'required|image|mimes:jpeg,png,jpg|max:5000',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:5000',
+            'cv' => 'required|mimes:pdf,doc,docx|max:5000',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
+        $model = User::where('id_user', $id)->first();
+        if($request->hasFile('ktp')){
+            $model->ktp && Storage::delete($model->ktp);
+            $requestData['ktp'] = $request->file('ktp')->store('public');
+        }
+
+        if($request->hasFile('foto')){
+            $model->foto && Storage::delete($model->foto);
+            $requestData['foto'] = $request->file('foto')->store('public');
+        }
+
+        if($request->hasFile('cv')){
+            $model->cv && Storage::delete($model->cv);
+            $requestData['cv'] = $request->file('cv')->store('public');
+        }
 
         $data = [
             'nama' => $request->nama,

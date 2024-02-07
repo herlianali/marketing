@@ -15,7 +15,7 @@
             <!-- /Logo -->
             <h4 class="mb-2">Tambah Data Baru</h4>
 
-            <form id="formAuthentication" class="mb-3" action="{{ route('user.store') }}" method="POST">
+            <form id="formAuthentication" class="mb-3" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -62,6 +62,39 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto Wajah<b> (Format: jpg, png )</b></label>
+                    <input type="file" id="foto" name="foto" accept="image/*"
+                    class="form-control @error('foto') is-invalid @enderror">
+                    @error('foto')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="ktp" class="form-label">Foto KTP<b> (Format: jpg, png )</b></label>
+                    <input type="file" id="ktp" name="ktp" accept="image/*"
+                    class="form-control @error('ktp') is-invalid @enderror">
+                    @error('wajah')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="cv" class="form-label">Upload CV<b> (Format: pdf, doc, docx )</b></label>
+                    <input type="file" id="cv" name="cv" accept="image/*"
+                    class="form-control @error('cv') is-invalid @enderror">
+                    @error('wajah')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3 form-password-toggle">
