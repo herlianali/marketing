@@ -49,38 +49,38 @@
                 </div>
 
                 <div class="mb-3">
-                <label for="no_hp" class="form-label">No Hp</label>
-                <input type="number" inputmode="numeric" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" placeholder="Masukkan No Hp" value="{{ old('no_hp') }}" required autocomplete="no_hp"/>
-                @error('no_hp')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <label for="no_hp" class="form-label">No Hp</label>
+                    <input type="number" inputmode="numeric" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" placeholder="Masukkan No Hp" value="{{ old('no_hp') }}" required autocomplete="no_hp"/>
+                    @error('no_hp')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
-                <label for="user_is" class="form-label">Nama Sales</label>
-                <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
-                    <option value="" readonly>-- Pilih Sales --</option>
-                    @foreach ($marketing as $m)
-                        <option value="{{ $m->id_user }}">{{ $m->nama }}</option>
-                    @endforeach
-                </select>
-                @error('user_id')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+                    <label for="user_is" class="form-label">Nama Sales</label>
+                    <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
+                        <option value="" readonly>-- Pilih Sales --</option>
+                        @foreach ($marketing as $m)
+                            <option value="{{ $m->id_user }}">{{ $m->nama }}</option>
+                        @endforeach
+                    </select>
+                    @error('user_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
-                <label for="tgl" class="form-label">Tanggal Registrasi</label>
-                <input type="date" class="form-control @error('tgl_masuk')
-                    is-invalid
-                @enderror" name="tgl_masuk" id="tgl_masuk" value="{{ old('tgl_masuk') ?? $m->tgl_masuk ?? ''}}">
-                @error('tgl_masuk')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <label for="tgl" class="form-label">Tanggal Registrasi</label>
+                    <input type="date" class="form-control @error('tgl_masuk')
+                        is-invalid
+                    @enderror" name="tgl_masuk" id="tgl_masuk" value="{{ old('tgl_masuk') ?? $m->tgl_masuk ?? ''}}">
+                    @error('tgl_masuk')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -106,6 +106,7 @@
                     </span>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="wajah" class="form-label">Foto Wajah<b> (Format: jpg, png )</b></label>
                     <input type="file" id="wajah" name="wajah" accept="image/*"
